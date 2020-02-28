@@ -17,10 +17,8 @@ function closeNavLinks() {
 menu.addEventListener('click', closeNavLinks);
 menuClose.addEventListener('click', closeNavLinks);
 ul.addEventListener('click', (e) => {
-    if(e.target.matches(".links li .search-input")) {
-        return;
-    } else if (!e.target.matches(".links li a")) {
-        closeNavLinks();
+    if(e.srcElement.children[0] != links){
+        closeNavLinks();  
     }
 });
 
@@ -49,12 +47,20 @@ allCategories.addEventListener('click', () => {
 
 const scrollRight = document.getElementById("scroll-right");
 const scrollLeft = document.getElementById("scroll-left");
-const div = document.querySelector(".image-thumbnails-parent");
-
+const div = document.querySelector(".image-thumbnails-child");
+let x = 0;
 scrollRight.onclick = function () {
-    div.scrollBy(50, 0);
+    if(x <= 550) {
+        x += 110;
+        div.style.transform = `translateX(-${x}px)`;
+        div.style.transition = "2s ease";
+    }
 }
 scrollLeft.onclick = function () {
-    div.scrollBy(-50, 0);
+    if(x >= 0) {
+        x -= 110;
+        div.style.transform = `translateX(-${x}px)`;
+        div.style.transition = "2s ease";
+    }
 }
 

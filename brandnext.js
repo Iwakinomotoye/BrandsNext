@@ -25,9 +25,6 @@ ul.addEventListener('click', (e) => {
 const allCategories = document.getElementById('allCategories');
 const imageParent = document.getElementById('imageParent');
 
-window.onresize = function () {
-    document.location.reload()
-};
 
 allCategories.addEventListener('click', () => {
     if(window.outerWidth < 992) {
